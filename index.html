@@ -18,7 +18,7 @@
       margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: linear-gradient(160deg,var(--bg1), var(--bg2));
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      color: #3b0130; overflow:hidden; /* скрываем скролл, все экраны занимают viewport */
+      color: #3b0130; overflow:hidden; 
     }
 
    
@@ -98,14 +98,14 @@
       </div>
       <div id="err" class="muted" aria-live="polite"></div>
       <div style="height:6px"></div>
-      <div style="font-size:12px;color:#b65a82;text-align:center">Подсказка: это просто атмосферно — пароль хранится в коде</div>
+      <div style="font-size:12px;color:#b65a82;text-align:center">Подсказка: 4 цифры, дата нашего знакомства </div>
     </div>
   </section>
 
 
   <section id="screen-quest" class="screen" aria-label="Экран вопроса">
     <div class="card">
-      <div class="title">Будешь всегда моим самым любимым человеком?</div>
+      <div class="title">Будешь всегда меня любить?</div>
       <div class="sub">Отвечай честно 💞</div>
 
       <div id="questionArea" class="question-area" aria-hidden="false">
@@ -121,7 +121,7 @@
   <section id="screen-main" class="screen" aria-label="Основная открытка">
     <div class="card main-inner">
       <div class="title">Для тебя 💘</div>
-      <div class="msg" id="mainMsg">Ты — моё самое тёплое чувство</div>
+      <div class="msg" id="mainMsg">Ты — самый лучший человечек в моей жизни😍</div>
       <div class="type" id="typeArea" aria-live="polite"></div>
       <div style="display:flex;gap:10px;justify-content:center;width:100%">
         <button id="nextMsg" class="btn">Ещё 💌</button>
@@ -141,14 +141,14 @@
 
 <script>
  
-  const PASSWORD = 'love2025';
+  const PASSWORD = '2305';
   const YOUR_NAME = 'Твоя девочка';
   const PARTNER_NAME = 'Мой любимый';
   const MESSAGES = [
-    'Ты — моё самое тёплое чувство 💖',
+    'Ты — самый лучший человечек в моей жизни😍',
     'Спасибо, что ты есть рядом 💕',
     'С тобой всё по‑настоящему 😍',
-    'Люблю тебя до луны и обратно 💞'
+    'Люблю тебя безумно 💞'
   ];
 
   document.getElementById('footerName').textContent = YOUR_NAME;
