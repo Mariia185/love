@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Открытка для любимого 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Адаптивность -->
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #ffcce0, #ffb3d9);
+      overflow: hidden;
+    }
+    .screen {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .active { display: flex; }
+    h1, h2, p { color: #c2185b; margin: 10px 0; }
+    input, button {
+      padding: 14px 22px;
+      border-radius: 25px;
+      border: 2px solid #f48fb1;
+      font-size: 18px;
+      max-width: 90%;
+    }
+    button {
+      background: #f06292;
+      color: white;
+      cursor: pointer;
+      margin: 8px;
+      transition: 0.3s;
+      min-width: 120px;
+    }
+    button:hover { background: #ec407a; }
+    .floating {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      animation: float 10s linear infinite;
+    }
+    @keyframes float {
+      from { transform: translateY(100vh); opacity: 0; }
+      20% { opacity: 1; }
+      to { transform: translateY(-50px); opacity: 0; }
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 10px;
+      border: 3px solid #f8bbd0;
+      transition: transform 0.5s;
+    }
+    .gallery img:hover { transform: scale(1.05); }
+
+    /* Адаптация для телефона */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.6rem; }
+      h2 { font-size: 1.3rem; }
+      p { font-size: 1rem; }
+      input, button { font-size: 16px; padding: 12px 18px; }
+      .gallery img { max-width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Экран 1: Пароль -->
+  <div id="screen1" class="screen active">
+    <h1>🔒 Секретная открытка</h1>
+    <p>Введи пароль, чтобы открыть 💌</p>
+    <input type="password" id="password" placeholder="Пароль">
+    <button onclick="checkPassword()">Открыть</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <!-- Экран 2: Вопрос -->
+  <div id="screen2" class="screen">
+    <h2>Будешь всегда моим самым любимым человеком? 💞</h2>
+    <div style="position: relative; width: 100%; height: 200px;">
+      <button onclick="showMain()">Да!</button>
+      <button id="noBtn">Нет</button>
+    </div>
+  </div>
+
+  <!-- Экран 3: Основная открытка -->
+  <div id="screen3" class="screen">
+    <h1>Любимый, это для тебя 💘</h1>
+    <p id="message">Ты — моё самое тёплое чувство 💖</p>
+    <button onclick="nextMessage()">Ещё 💌</button>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600" alt="">
+      <img src="https://images.unsplash.com/photo-1510022079733-8b58aca7c4ae?q=80&w=600" alt="">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600" alt="">
+    </div>
+
+    <p style="margin-top:30px;">Сделано с любовью 💋</p>
+  </div>
+
+  <!-- Летающие сердечки -->
+  <script>
+    const emojis = ["💖","💘","💝","💞","💋","😘","😍"];
+    for (let i=0; i<25; i++) {
+      let e = document.createElement("div");
+      e.className = "floating";
+      e.style.left = Math.random()*100 + "vw";
+      e.style.fontSize = (20 + Math.random()*30) + "px";
+      e.style.animationDuration = (5 + Math.random()*10) + "s";
+      e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+      document.body.appendChild(e);
+    }
+
+    // Навигация
+    const PASSWORD = "love2025";
+    function checkPassword(){
+      let val = document.getElementById("password").value;
+      if(val === PASSWORD){
+        document.getElementById("screen1").classList.remove("active");
+        document.getElementById("screen2").classList.add("active");
+      } else {
+        document.getElementById("error").innerText = "Неверный пароль 😘";
+      }
+    }
+    function showMain(){
+      document.getElementById("screen2").classList.remove("active");
+      document.getElementById("screen3").classList.add("active");
+    }
+
+    // Убегающая кнопка
+    const noBtn = document.getElementById("noBtn");
+    noBtn.style.position = "absolute";
+    noBtn.style.left = "50%";
+    noBtn.style.top = "50%";
+    noBtn.style.transform = "translate(-50%, -50%)";
+    noBtn.addEventListener("mouseover", ()=>{
+      noBtn.style.left = Math.random()*80 + "%";
+      noBtn.style.top = Math.random()*60 + "%";
+      noBtn.style.transform = "translate(0,0)";
+    });
+
+    // Сообщения
+    const messages = [
+      "Ты — моё самое тёплое чувство 💖",
+      "Спасибо, что ты есть 💕",
+      "С тобой всё по-настоящему 😍",
+      "Люблю тебя до луны и обратно 💞"
+    ];
+    let i = 0;
+    function nextMessage(){
+      i = (i+1) % messages.length;
+      document.getElementById("message").innerText = messages[i];
+    }
+  </script>
+</body>
+</html>
